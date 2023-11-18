@@ -12,9 +12,9 @@
 // Override the CS pin for the nice!view
 // From: https://discord.com/channels/719497620560543766/719909884769992755/1047232429481529354
 // pad 7 on Sofle V2 RGB = D4 on the ProMicro = 022 Nice!Nano
-&nice_view_spi {
-    cs-gpios = <&pro_micro 4 GPIO_ACTIVE_HIGH>;
-};
+// &nice_view_spi {
+//     cs-gpios = <&pro_micro 4 GPIO_ACTIVE_HIGH>;
+// };
 
 / {
 
