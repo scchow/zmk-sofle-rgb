@@ -9,21 +9,12 @@
 #define RAISE 2
 #define ADJUST 3
 
-&left_encoder { resolution = <2>; };
-&right_encoder { resolution = <2>; };
-
 // Override the CS pin for the nice!view
 // From: https://discord.com/channels/719497620560543766/719909884769992755/1047232429481529354
 // pad 7 on Sofle V2 RGB = D4 on the ProMicro = 022 Nice!Nano
 &nice_view_spi {
     cs-gpios = <&pro_micro 4 GPIO_ACTIVE_HIGH>;
 };
-
-
-#define COLEMAK  0
-#define QWERTY  1
-#define LOWER   2
-#define RAISE   3
 
 / {
 
@@ -44,25 +35,7 @@
     keymap {
         compatible = "zmk,keymap";
 
-        colemak_layer {
-// ------------------------------------------------------------------------------------------------------------
-// |  `    |  1  |  2  |  3   |  4   |  5   |                   |  6   |  7    |  8    |  9   |   0   |   \   |
-// |  TAB  |  Q  |  W  |  F   |  P   |  B   |                   |  J   |  L    |  U    |  Y   |   ;   | BKSPC |
-// | C/ESC |  A  |  R  |  S   |  T   |  G   |                   |  M   |  N    |  E    |  I   |   O   |  C/'  |
-// | SHIFT |  Z  |  X  |  C   |  D   |  V   |  MUTE  |  | PLAY  |  K   |  H    |  ,    |  .   |   /   | SHIFT |
-//               | CAPS| ALT  | GUI/-| SPACE|LOWER/[ |  |RAISE/]| ENTER|  GUI/=|  ALT  | CTRL |
-            bindings = <
-&kp ESC        &kp N1 &kp N2    &kp N3    &kp N4         &kp N5                           &kp N6  &kp N7         &kp N8    &kp N9   &kp N0   &kp BSLH
-&kp TAB        &kp Q  &kp W     &kp F     &kp P          &kp B                            &kp J   &kp L          &kp U     &kp Y    &kp SEMI    &kp BSPC
-&kp LSHFT      &kp A  &kp R     &kp S     &kp T          &kp G                            &kp M   &kp N          &kp E     &kp I    &kp O &mt SQT RSHFT 
-&kp LCTRL      &kp Z  &kp X     &kp C     &kp D          &kp V     &kp C_MUTE  &kp C_PP   &kp K   &kp H          &kp COMMA &kp DOT  &kp FSLH &kp RCTRL
-               &mt GRAVE CLCK   &lt LOWER LBKT  &mt LGUI MINUS &kp LALT &kp SPACE  &kp RET    &kp RALT &mt RGUI EQUAL &lt RAISE RBKT &tog QWERTY
-            >;
-
-            sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP &inc_dec_kp PG_DN PG_UP>;
-        };
-
-        qwerty_layer {
+        default_layer {
 // ------------------------------------------------------------------------------------------------------------
 // |  `    |  1  |  2  |  3   |  4   |  5   |                   |  6   |  7    |  8    |  9   |   0   | BKSPC |
 // |  ESC  |  Q  |  W  |  E   |  R   |  T   |                   |  Y   |  U    |  I    |  O   |   P   | BKSPC |
