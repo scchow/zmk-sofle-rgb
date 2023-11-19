@@ -9,14 +9,6 @@
 #define RAISE 2
 #define ADJUST 3
 
-&left_encoder { resolution = <2>; };
-&right_encoder { resolution = <2>; };
-
-#define COLEMAK  1
-#define QWERTY  0
-#define LOWER   2
-#define RAISE   3
-
 / {
 
    // Activate ADJUST layer by pressing raise and lower
@@ -36,25 +28,7 @@
     keymap {
         compatible = "zmk,keymap";
 
-        colemak_layer {
-// ------------------------------------------------------------------------------------------------------------
-// |  `    |  1  |  2  |  3   |  4   |  5   |                   |  6   |  7    |  8    |  9   |   0   |   \   |
-// |  TAB  |  Q  |  W  |  F   |  P   |  B   |                   |  J   |  L    |  U    |  Y   |   ;   | BKSPC |
-// | C/ESC |  A  |  R  |  S   |  T   |  G   |                   |  M   |  N    |  E    |  I   |   O   |  C/'  |
-// | SHIFT |  Z  |  X  |  C   |  D   |  V   |  MUTE  |  | PLAY  |  K   |  H    |  ,    |  .   |   /   | SHIFT |
-//               | CAPS| ALT  | GUI/-| SPACE|LOWER/[ |  |RAISE/]| ENTER|  GUI/=|  ALT  | CTRL |
-            bindings = <
-&kp ESC        &kp N1 &kp N2    &kp N3    &kp N4         &kp N5                           &kp N6  &kp N7         &kp N8    &kp N9   &kp N0   &kp BSLH
-&kp TAB        &kp Q  &kp W     &kp F     &kp P          &kp B                            &kp J   &kp L          &kp U     &kp Y    &kp SEMI    &kp BSPC
-&kp LSHFT      &kp A  &kp R     &kp S     &kp T          &kp G                            &kp M   &kp N          &kp E     &kp I    &kp O &mt SQT RSHFT 
-&kp LCTRL      &kp Z  &kp X     &kp C     &kp D          &kp V     &kp C_MUTE  &kp C_PP   &kp K   &kp H          &kp COMMA &kp DOT  &kp FSLH &kp RCTRL
-               &mt GRAVE CLCK   &lt LOWER LBKT  &mt LGUI MINUS &kp LALT &kp SPACE  &kp RET    &kp RALT &mt RGUI EQUAL &lt RAISE RBKT &tog QWERTY
-            >;
-
-            sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP &inc_dec_kp PG_DN PG_UP>;
-        };
-
-        qwerty_layer {
+        default_layer {
 // ------------------------------------------------------------------------------------------------------------
 // |  `    |  1  |  2  |  3   |  4   |  5   |                   |  6   |  7    |  8    |  9   |   0   | BKSPC |
 // |  ESC  |  Q  |  W  |  E   |  R   |  T   |                   |  Y   |  U    |  I    |  O   |   P   | BKSPC |
@@ -66,7 +40,7 @@
 &kp ESC   &kp Q  &kp W     &kp E    &kp R     &kp T                                 &kp Y  &kp U     &kp I      &kp O    &kp P    &kp BSPC
 &kp TAB   &kp A  &kp S     &kp D    &kp F     &kp G                                 &kp H  &kp J     &kp K      &kp L    &kp SEMI &kp SQT
 &kp LSHFT &kp Z  &kp X     &kp C    &kp V     &kp B      &kp C_MUTE      &kp C_PP   &kp N  &kp M     &kp COMMA  &kp DOT  &kp FSLH &kp RSHFT
-                 &kp LCTRL &kp LALT &sys_reset &mo LOWER  &kp SPACE       &kp RET    &mo RAISE       &sys_reset &kp RALT &kp RCTRL
+                 &kp LCTRL &kp LALT &sys_reset &mo LOWER  &kp SPACE       &kp RET    &mo RAISE        &sys_reset &kp RALT &kp RCTRL
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
