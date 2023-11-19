@@ -12,8 +12,8 @@
 &left_encoder { resolution = <2>; };
 &right_encoder { resolution = <2>; };
 
-#define COLEMAK  0
-#define QWERTY  1
+#define COLEMAK  1
+#define QWERTY  0
 #define LOWER   2
 #define RAISE   3
 
